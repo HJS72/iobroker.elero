@@ -2,12 +2,12 @@
   "name": "iobroker.elero",
   "version": "0.1.0",
   "description": "ioBroker adapter to control Elero Centero devices (blinds, awnings, shutters) via USB Transmitter Stick",
-  "author": "Your Name",
+  "author": "HJS72",
   "license": "MIT",
-  "homepage": "https://github.com/iobroker-community-adapters/iobroker.elero",
+  "homepage": "https://github.com/HJS72/iobroker.elero",
   "repository": {
     "type": "git",
-    "url": "https://github.com/iobroker-community-adapters/iobroker.elero"
+    "url": "https://github.com/HJS72/iobroker.elero"
   },
   "engines": {
     "node": ">=14.0.0"

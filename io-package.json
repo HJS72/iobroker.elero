@@ -5,7 +5,7 @@
     "title": "Elero Centero",
     "desc": "Control Elero Centero devices (Blinds, Awnings, Shutters) via USB Transmitter Stick",
     "authors": [
-      "Your Name"
+      "HJS72"
     ],
     "license": "MIT",
     "platform": "Javascript/Node.js",
