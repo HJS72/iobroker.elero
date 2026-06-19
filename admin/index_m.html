@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Elero Configuration</title>
+    <link rel="stylesheet" href="../../lib/css/materialize.css"/>
+    <link rel="stylesheet" href="../../css/adapter.css"/>
+    <script src="../../lib/js/jquery-3.2.1.min.js"></script>
+    <script src="../../lib/js/materialize.js"></script>
+    <script src="../../js/translate.js"></script>
+    <script src="words.js"></script>
+</head>
+<body>
+    <div class="m adapter-container">
+        <div class="row">
+            <div class="col s12 m4 l2">
+                <img src="elero.png" class="logo">
+            </div>
+            <div class="col s12 m8 l10">
+                <h2>Elero Centero</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 m10 l8">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Settings</span>
+                        
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input type="text" id="comport" class="value">
+                                <label for="comport" class="translate">comport</label>
+                                <span class="helper-text">/dev/cu.usbserial-A101XT0C or similar</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input type="number" id="baudrate" class="value" value="38400">
+                                <label for="baudrate" class="translate">baudrate</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title translate">devices</span>
+                        <table id="devicesTable" class="striped">
+                            <thead>
+                                <tr>
+                                    <th class="translate">channel</th>
+                                    <th class="translate">name</th>
+                                    <th class="translate">type</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                        <button class="btn waves-effect waves-light blue" id="addDevice" type="button">
+                            Add Device
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let devices = [];
+
+        function onChange() {
+            // Mark adapter as changed
+            onChange.call(window);
+        }
+
+        function loadSettings() {
+            if (!window.sendTo) return;
+
+            window.sendTo(null, 'getDevices', null, (result) => {
+                if (result && result.devices) {
+                    devices = result.devices || [];
+                    renderDeviceTable();
+                }
+            });
+        }
+
+        function renderDeviceTable() {
+            const tbody = $('#devicesTable tbody');
+            tbody.empty();
+
+            devices.forEach((dev, idx) => {
+                const row = $(`
+                    <tr>
+                        <td><input type="number" value="${dev.channel}" class="device-channel" data-idx="${idx}" min="1" max="15"></td>
+                        <td><input type="text" value="${dev.name}" class="device-name" data-idx="${idx}"></td>
+                        <td>
+                            <select class="device-type" data-idx="${idx}">
+                                <option value="awning" ${dev.type === 'awning' ? 'selected' : ''}>Awning</option>
+                                <option value="blind" ${dev.type === 'blind' ? 'selected' : ''}>Blind</option>
+                                <option value="shutter" ${dev.type === 'shutter' ? 'selected' : ''}>Shutter</option>
+                            </select>
+                        </td>
+                        <td><button class="btn-small waves-effect red delete-device" data-idx="${idx}">Delete</button></td>
+                    </tr>
+                `);
+                tbody.append(row);
+            });
+
+            $('.device-channel, .device-name, .device-type').on('change', function() {
+                const idx = $(this).data('idx');
+                devices[idx].channel = parseInt($(`[data-idx="${idx}"].device-channel`).val());
+                devices[idx].name = $(`[data-idx="${idx}"].device-name`).val();
+                devices[idx].type = $(`[data-idx="${idx}"].device-type`).val();
+                onChange();
+            });
+
+            $('.delete-device').on('click', function() {
+                const idx = $(this).data('idx');
+                devices.splice(idx, 1);
+                renderDeviceTable();
+                onChange();
+            });
+        }
+
+        $('#addDevice').on('click', () => {
+            devices.push({
+                channel: devices.length + 1,
+                name: `Device ${devices.length + 1}`,
+                type: 'awning'
+            });
+            renderDeviceTable();
+            onChange();
+        });
+
+        $(document).ready(() => {
+            loadSettings();
+            $('.translate').trigger('change');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{
+  "common": {
+    "name": "elero",
+    "version": "0.1.0",
+    "title": "Elero Centero",
+    "desc": "Control Elero Centero devices (Blinds, Awnings, Shutters) via USB Transmitter Stick",
+    "authors": [
+      "Your Name"
+    ],
+    "license": "MIT",
+    "platform": "Javascript/Node.js",
+    "mode": "daemon",
+    "compact": false,
+    "materialize": true,
+    "enabled": true,
+    "type": "hardware",
+    "loglevel": "info",
+    "connectionType": "local",
+    "dataSource": "device",
+    "icon": "elero.png"
+  },
+  "native": {
+    "comport": "/dev/cu.usbserial-A101XT0C",
+    "baudrate": 38400,
+    "devices": [
+      {
+        "channel": 1,
+        "name": "Markise 1",
+        "type": "awning"
+      },
+      {
+        "channel": 2,
+        "name": "Markise 2",
+        "type": "awning"
+      }
+    ]
+  },
+  "instanceObjects": []
+}
