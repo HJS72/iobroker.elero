@@ -3,7 +3,32 @@
     "name": "elero",
     "version": "0.1.0",
     "title": "Elero Centero",
-    "desc": "Control Elero Centero devices (Blinds, Awnings, Shutters) via USB Transmitter Stick",
+    "titleLang": {
+      "en": "Elero Centero",
+      "de": "Elero Centero",
+      "ru": "Elero Centero",
+      "pt": "Elero Centero",
+      "nl": "Elero Centero",
+      "fr": "Elero Centero",
+      "it": "Elero Centero",
+      "es": "Elero Centero",
+      "pl": "Elero Centero",
+      "uk": "Elero Centero",
+      "zh-cn": "Elero Centero"
+    },
+    "desc": {
+      "en": "Control Elero Centero devices (blinds, awnings, shutters) via USB transmitter stick",
+      "de": "Steuert Elero-Centero-Geraete (Jalousien, Markisen, Rollos) ueber USB-Transmitter-Stick",
+      "ru": "Upravlenie ustroystvami Elero Centero (zhalyuzi, markizy, rolshtory) cherez USB-peredatchik",
+      "pt": "Controla dispositivos Elero Centero (persianas, toldos, estores) via stick USB transmissor",
+      "nl": "Bedient Elero Centero-apparaten (jaloezieen, zonneschermen, rolluiken) via USB-zenderstick",
+      "fr": "Controle les appareils Elero Centero (stores, bannes, volets) via une cle USB emetteur",
+      "it": "Controlla dispositivi Elero Centero (tapparelle, tende da sole, avvolgibili) tramite stick USB trasmettitore",
+      "es": "Controla dispositivos Elero Centero (persianas, toldos) mediante stick USB transmisor",
+      "pl": "Steruje urzadzeniami Elero Centero (zaluzje, markizy, rolety) przez nadajnik USB",
+      "uk": "Keruye prystroyamy Elero Centero (zhalyuzi, markizy, roleti) cherez USB-peredavach",
+      "zh-cn": "tong guo USB fa she qi kong zhi Elero Centero she bei"
+    },
     "authors": [
       "HJS72"
     ],
@@ -17,7 +42,36 @@
     "loglevel": "info",
     "connectionType": "local",
     "dataSource": "device",
-    "icon": "elero.png"
+    "icon": "elero.png",
+    "extIcon": "https://raw.githubusercontent.com/HJS72/iobroker.elero/main/admin/elero.png",
+    "news": {
+      "0.1.1": {
+        "en": "Added CI checks and release automation.",
+        "de": "CI-Pruefungen und Release-Automatisierung hinzugefuegt.",
+        "ru": "Dobavleny proverki CI i avtomatizaciya releezov.",
+        "pt": "Adicionadas verificacoes de CI e automacao de release.",
+        "nl": "CI-controles en release-automatisering toegevoegd.",
+        "fr": "Ajout des verifications CI et de l'automatisation des releases.",
+        "it": "Aggiunti controlli CI e automazione release.",
+        "es": "Se agregaron comprobaciones CI y automatizacion de lanzamientos.",
+        "pl": "Dodano kontrole CI i automatyzacje wydan.",
+        "uk": "Dodano perevirky CI ta avtomatyzatsiyu reliziv.",
+        "zh-cn": "yi tian jia CI jian cha he fa bu zi dong hua"
+      },
+      "0.1.0": {
+        "en": "Initial release of Elero Centero USB adapter prototype.",
+        "de": "Erste Version des Elero-Centero-USB-Adapter-Prototyps.",
+        "ru": "Pervyy reliz prototipa USB-adaptera Elero Centero.",
+        "pt": "Lancamento inicial do prototipo do adaptador USB Elero Centero.",
+        "nl": "Eerste release van de Elero Centero USB-adapterprototyp.",
+        "fr": "Premiere version du prototype d'adaptateur USB Elero Centero.",
+        "it": "Rilascio iniziale del prototipo adattatore USB Elero Centero.",
+        "es": "Lanzamiento inicial del prototipo de adaptador USB Elero Centero.",
+        "pl": "Pierwsze wydanie prototypu adaptera USB Elero Centero.",
+        "uk": "Pershyi reliz prototypu USB-adaptera Elero Centero.",
+        "zh-cn": "Elero Centero USB shi pei qi yuan xing shou ge ban ben"
+      }
+    }
   },
   "native": {
     "comport": "/dev/cu.usbserial-A101XT0C",

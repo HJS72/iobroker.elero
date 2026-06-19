@@ -24,10 +24,14 @@
   ],
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run test:package",
+    "test:package": "mocha test/package --exit"
   },
   "dependencies": {
     "serialport": "^9.2.8"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@iobroker/testing": "^5.0.3",
+    "mocha": "^10.7.3"
+  }
 }
